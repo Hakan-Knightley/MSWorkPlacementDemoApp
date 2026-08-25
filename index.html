@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="UniSwap - borrow and swap useful things with students on your campus." />
+  <title>UniSwap | Student equipment exchange</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">u</span><span>uniswap</span></div>
+      <div class="campus-picker"><span class="campus-dot"></span><span>University of Bristol</span><i data-lucide="chevrons-up-down"></i></div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-item active" href="#browse"><i data-lucide="layout-grid"></i><span>Browse</span></a>
+        <a class="nav-item" href="#saved"><i data-lucide="heart"></i><span>Saved</span><span class="nav-count">4</span></a>
+        <a class="nav-item" href="#messages"><i data-lucide="message-circle"></i><span>Messages</span><span class="nav-count unread">2</span></a>
+        <a class="nav-item" href="#listings"><i data-lucide="package-open"></i><span>My listings</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-box"><div class="help-icon"><i data-lucide="sparkles"></i></div><strong>Make campus circular</strong><p>Every swap keeps something useful in use.</p><button class="text-button">How it works <i data-lucide="arrow-up-right"></i></button></div>
+        <a class="nav-item" href="#settings"><i data-lucide="settings-2"></i><span>Settings</span></a>
+        <div class="profile"><div class="avatar">AK</div><div><strong>Alex Kim</strong><span>Student account</span></div><i data-lucide="more-horizontal"></i></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="browse">
+      <header class="topbar"><button class="mobile-menu" aria-label="Open menu"><i data-lucide="menu"></i></button><div class="breadcrumbs">Home <span>/</span> Explore</div><div class="top-actions"><button class="icon-button" aria-label="Notifications"><i data-lucide="bell"></i><span class="notification-dot"></span></button><button class="verify-button" id="open-verify"><i data-lucide="badge-check"></i><span>Verify status</span></button><button class="list-button" id="open-listing"><i data-lucide="plus"></i> List an item</button></div></header>
+
+      <section class="hero-section"><div class="hero-copy"><p class="eyebrow"><span></span> Your campus, shared</p><h1>Good things<br /><em>go around.</em></h1><p class="hero-description">Borrow what you need. Pass on what you don't.<br />All from people at your university.</p><div class="hero-search"><i data-lucide="search"></i><input id="search-input" type="search" placeholder="Search calculators, textbooks, cameras..." /><kbd>⌘ K</kbd></div></div><div class="hero-art"><div class="burst burst-one"></div><div class="burst burst-two"></div><div class="floating-note note-one"><i data-lucide="repeat-2"></i><span>swap<br /><b>more</b></span></div><div class="floating-note note-two"><i data-lucide="leaf"></i><span>less<br /><b>waste</b></span></div><div class="hero-photo"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=85" alt="Students studying together" /></div><div class="hero-sticker">BUILT<br /><span>BY</span><br />STUDENTS</div></div></section>
+      <section class="feature-strip" aria-label="Student tools"><article class="assistant-card"><div class="feature-icon coral-icon"><i data-lucide="sparkles"></i></div><div><p class="eyebrow muted">New · powered by UniSwap AI</p><h2>What do you actually need for your course?</h2><p>Tell us your course and get a useful starter kit, matched to what students are sharing nearby.</p><button class="feature-button" id="open-assistant">Build my kit <i data-lucide="arrow-up-right"></i></button></div><span class="feature-number">01</span></article><article class="verify-card"><div class="feature-icon yellow-icon"><i data-lucide="badge-check"></i></div><div><p class="eyebrow muted">Trust, made simple</p><h2>Show you're part of the community.</h2><p>Verify once with your university email and unlock the student-only exchange.</p><button class="feature-button dark-button" id="open-verify-card">Verify in 30 seconds <i data-lucide="arrow-up-right"></i></button></div><span class="feature-number">02</span></article></section>
+
+      <section class="content-section"><div class="section-heading"><div><p class="eyebrow muted">Explore the exchange</p><h2>Find it on campus</h2></div><button class="sort-button" id="sort-button">Most recent <i data-lucide="sliders-horizontal"></i></button></div><div class="category-row" id="category-row"><button class="category active" data-category="All">All items <span>24</span></button><button class="category" data-category="Study">Study <span>8</span></button><button class="category" data-category="Tech">Tech <span>6</span></button><button class="category" data-category="Home">Home <span>5</span></button><button class="category" data-category="Creative">Creative <span>3</span></button><button class="category" data-category="Sports">Sports <span>2</span></button></div><div class="listing-grid" id="listing-grid"></div></section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="listing-modal" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" id="close-listing" aria-label="Close"><i data-lucide="x"></i></button><p class="eyebrow muted">Share with your campus</p><h2 id="modal-title">List an item</h2><p class="modal-intro">Give something useful a second life with another student.</p><form id="listing-form"><label>What are you sharing?<input name="title" required placeholder="e.g. Scientific calculator" /></label><div class="form-row"><label>Category<select name="category"><option>Study</option><option>Tech</option><option>Home</option><option>Creative</option><option>Sports</option></select></label><label>Exchange type<select name="type"><option>Borrow</option><option>Swap</option><option>Give away</option></select></label></div><label>Where can they collect it?<input name="location" required placeholder="e.g. Senate House" /></label><button class="submit-button" type="submit">Publish listing <i data-lucide="arrow-up-right"></i></button></form></div></div>
+  <div class="modal-backdrop" id="assistant-modal" aria-hidden="true"><div class="modal assistant-modal" role="dialog" aria-modal="true" aria-labelledby="assistant-title"><button class="modal-close" data-close-modal="assistant-modal" aria-label="Close"><i data-lucide="x"></i></button><p class="eyebrow muted">Your course, decoded</p><h2 id="assistant-title">Build your course kit</h2><p class="modal-intro">No vague “student essentials”. We’ll suggest the kit that makes sense for your actual modules.</p><form id="assistant-form"><label>What are you studying?<input name="course" required placeholder="e.g. Architecture, Nursing, Computer Science" /></label><label>What are you working on right now?<select name="project"><option>Everyday classes</option><option>A big project or dissertation</option><option>Placement or fieldwork</option><option>Exam season</option></select></label><button class="submit-button" type="submit">Recommend my kit <i data-lucide="sparkles"></i></button></form><div class="recommendation" id="recommendation" aria-live="polite"></div></div></div>
+  <div class="modal-backdrop" id="verify-modal" aria-hidden="true"><div class="modal verify-modal" role="dialog" aria-modal="true" aria-labelledby="verify-title"><button class="modal-close" data-close-modal="verify-modal" aria-label="Close"><i data-lucide="x"></i></button><div class="verify-heading"><div class="feature-icon yellow-icon"><i data-lucide="badge-check"></i></div><div><p class="eyebrow muted">Student status</p><h2 id="verify-title">Get your verified tick</h2></div></div><p class="modal-intro">Use your university email to prove you belong here. We only use it to verify your student status.</p><form id="verify-form"><label>University email<input name="email" type="email" required placeholder="you@bristol.ac.uk" /></label><button class="submit-button" type="submit">Send verification link <i data-lucide="mail"></i></button></form><div class="privacy-note"><i data-lucide="lock-keyhole"></i><span>Your email stays private. Verified profiles get a check beside their name.</span></div></div></div>
+  <div class="toast" id="toast"><i data-lucide="check-circle-2"></i><span></span></div>
+  <script src="https://unpkg.com/lucide@latest"></script><script src="app.js"></script>
+</body>
+</html>
